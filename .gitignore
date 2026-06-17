@@ -1,0 +1,18 @@
+.pycache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.env
+user_preferences.yaml
+.DS_Store
+.venv/
+.venv-wechat-crawler/
+
+# Runtime/output data lives in Obsidian/LifeOS, not in the code repo.
+04_实验设计记录/
+AI Agent/
+系统/
+
+# Keep vendored helper files, but never include nested git metadata.
+external/wechat-article-crawler/
+external/**/.git/

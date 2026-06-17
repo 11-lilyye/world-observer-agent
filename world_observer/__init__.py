@@ -1,0 +1,2 @@
+"""World Observer Agent."""
+
