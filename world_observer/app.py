@@ -94,8 +94,8 @@ class WorldObserverApp:
                 prefer_web_hotspots = True
                 print(f"[Create] auto selected topic from hotspots: {topic}", flush=True)
         print(f"[Create] topic={topic} platform={platform or '公众号'} purpose={purpose or 'auto'}", flush=True)
-        print("[Create] step 1/3: searching web facts, hotspots, and related sources...", flush=True)
-        print("[Create] step 2/3: checking local WeChat collections for format/style references...", flush=True)
+        print("[Create] step 1/3: 搜网上资料/热点/相关文献", flush=True)
+        print("[Create] step 2/3: 看本地公众号收藏资料并提取格式", flush=True)
         reference_plan = PlatformIntelligenceAgent(self.world).build_reference_plan(
             topic,
             platform or "公众号",
@@ -104,7 +104,7 @@ class WorldObserverApp:
         )
         world_hits = reference_plan.sources
         print(f"[Create] world sources={len(world_hits)} reference_platform={reference_plan.reference_platform}", flush=True)
-        print("[Create] step 3/3: extracting your Obsidian knowledge and viewpoints...", flush=True)
+        print("[Create] step 3/3: 提取你的知识库观点", flush=True)
         brain_hits = MyBrainAgent(self.obsidian).search(topic, limit=limit)
         print(f"[Create] Obsidian hits={len(brain_hits)}", flush=True)
         print("[Create] analyzing observations and viral structures...", flush=True)

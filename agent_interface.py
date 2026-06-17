@@ -239,7 +239,7 @@ def render_plan(plan: AgentPlan) -> str:
             f"- 文章目的：{plan.purpose or '根据任务推断'}",
             f"- 生成数量：{plan.count}",
             f"- 目标用户：{plan.target_reader or '根据主题和平台推断'}",
-            f"- 固定流程：1. 搜网上资料/热点/相关文献  2. 看本地公众号收藏资料学习格式  3. 提取你的知识库观点",
+            f"- 固定流程：1. 搜网上资料/热点/相关文献  2. 看本地公众号收藏资料并提取格式  3. 提取你的知识库观点",
             f"- 参考源：{plan.reference_source}",
             f"- 创作引擎：{plan.engine or '默认'}",
             f"- 文章长度：{_article_length_label(plan.article_length, plan.count)}",
@@ -569,10 +569,10 @@ def output_path_for_platform(settings: Settings, platform: str, mode: str) -> Pa
 def _reference_source(platform: str | None, auto_topic: bool = False, web_reference: bool = False) -> str:
     if platform in {"公众号", "公总号", "wechat", "微信", None}:
         if web_reference:
-            return "固定顺序：先搜中外网站/热点/相关资料；再看本地公众号收藏学格式；最后提取你的知识库观点"
+            return "固定顺序：先搜网上资料/热点/相关文献；再看本地公众号收藏资料并提取格式；最后提取你的知识库观点"
         if auto_topic:
-            return "固定顺序：先看中外网站/平台热点；再看本地公众号收藏学格式；最后提取你的知识库观点"
-        return "固定顺序：先搜中外网站/热点/相关资料；再看本地公众号收藏学格式；最后提取你的知识库观点"
+            return "固定顺序：先搜网上资料/热点/相关文献；再看本地公众号收藏资料并提取格式；最后提取你的知识库观点"
+        return "固定顺序：先搜网上资料/热点/相关文献；再看本地公众号收藏资料并提取格式；最后提取你的知识库观点"
     if platform == "小红书":
         return "小红书优先：同主题笔记、封面标题、收藏/评论结构"
     if platform == "博客":
