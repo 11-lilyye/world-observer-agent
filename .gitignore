@@ -2,13 +2,15 @@
 __pycache__/
 *.py[cod]
 .pytest_cache/
+*.egg-info/
 .env
 user_preferences.yaml
 .DS_Store
 .venv/
 .venv-wechat-crawler/
+data/
 
-# Runtime/output data lives in Obsidian/LifeOS, not in the code repo.
+# Runtime/output data lives outside the code repo.
 04_实验设计记录/
 AI Agent/
 系统/

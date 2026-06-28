@@ -24,7 +24,7 @@ class Settings:
     trendradar_enabled: bool = True
     trendradar_api_url: str = "https://newsnow.busiyi.world/api/s"
     trendradar_platforms: tuple[str, ...] = ()
-    image_backend: str = "canva_figma"
+    image_backend: str = "prompt_only"
     image_fallback_backend: str = "prompt_only"
     batch_size: int = 2
     batch_article_min_chars: int = 1000
@@ -37,14 +37,9 @@ class Settings:
         output = os.getenv("WORLD_OBSERVER_OUTPUT_DIR")
         feeds = os.getenv("WORLD_OBSERVER_FEEDS", "")
         trendradar_platforms = os.getenv("TREND_RADAR_PLATFORMS", "")
-        default_vault = (
-            Path.home()
-            / "LifeOS"
-            / "10_人生OS"
-            / "叶总的人生游戏试验站"
-            / "叶总的人生地图"
-        )
-        default_output = default_vault / "03_Research_研究复盘" / "实验室" / "04_实验设计记录"
+        project_root = Path(__file__).resolve().parents[2]
+        default_vault = project_root / "data" / "obsidian_vault"
+        default_output = project_root / "data" / "04_实验设计记录"
         return cls(
             obsidian_vault=Path(vault).expanduser() if vault else default_vault,
             output_dir=Path(output).expanduser() if output else default_output,
@@ -63,7 +58,7 @@ class Settings:
             trendradar_enabled=os.getenv("TREND_RADAR_ENABLED", "true").lower() in {"1", "true", "yes", "on"},
             trendradar_api_url=os.getenv("TREND_RADAR_API_URL", "https://newsnow.busiyi.world/api/s"),
             trendradar_platforms=tuple(item.strip() for item in trendradar_platforms.split(",") if item.strip()),
-            image_backend=os.getenv("WORLD_OBSERVER_IMAGE_BACKEND", "canva_figma"),
+            image_backend=os.getenv("WORLD_OBSERVER_IMAGE_BACKEND", "prompt_only"),
             image_fallback_backend=os.getenv("WORLD_OBSERVER_IMAGE_FALLBACK_BACKEND", "prompt_only"),
             batch_size=int(os.getenv("WORLD_OBSERVER_BATCH_SIZE", "2")),
             batch_article_min_chars=int(os.getenv("WORLD_OBSERVER_BATCH_ARTICLE_MIN_CHARS", "1000")),

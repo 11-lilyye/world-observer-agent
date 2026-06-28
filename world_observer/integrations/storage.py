@@ -13,9 +13,8 @@ from typing import Any
 class Storage:
     def __init__(self, root: Path) -> None:
         self.root = root
-        self.project_root = Path(__file__).resolve().parents[2]
         self.library_root = root / "agent资料库"
-        self.system_root = self.project_root / "系统"
+        self.system_root = root / "系统"
         self.wechat_root = root / "微信开发平台" / "公众号" / "输出"
         self._ensure_base_dirs()
 

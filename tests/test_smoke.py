@@ -22,5 +22,4 @@ def test_create_smoke(tmp_path):
     assert result.path is not None
     assert (result.path / "article.md").exists()
     assert (result.path / "analysis.md").exists()
-    assert (result.path / "cover_prompt.txt").exists()
-    assert (result.path / "images").exists()
+    assert (result.path / "metadata.json").exists()
