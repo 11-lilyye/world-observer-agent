@@ -231,7 +231,7 @@ Small local models can run the workflow, but article quality may be lower than s
 
 ## World Sources
 
-`WORLD_OBSERVER_SOURCE_MODE=auto` uses TrendRadar/newsnow-compatible hot-list APIs plus RSS/Atom feeds, then falls back to offline seeds if network sources fail.
+`WORLD_OBSERVER_SOURCE_MODE=auto` uses TrendRadar/newsnow-compatible hot-list APIs plus RSS/Atom feeds, then falls back to offline seeds if network sources fail. The default hot-list endpoint is configurable and is not bundled with this repository.
 
 Optional settings:
 
@@ -265,6 +265,16 @@ WECHAT_ARTICLE_CRAWLER_DIR=/path/to/wechat-article-crawler
 ```
 
 If the crawler is unavailable, blocked by login, or hits a verification page, the agent does not bypass platform limits.
+
+## Acknowledgements
+
+World Observer Agent is designed to work with public or self-hosted hot-topic sources:
+
+- TrendRadar/newsnow-compatible hot-list APIs are used as optional world-observation sources.
+- RSS/Atom feeds are used as optional public reference sources.
+- [gxcsoccer/wechat-article-crawler](https://github.com/gxcsoccer/wechat-article-crawler) is only an optional helper for WeChat article import, not a bundled dependency.
+
+Please follow the original licenses and terms of any external source or service you configure.
 
 ## Development
 
