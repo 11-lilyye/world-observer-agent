@@ -184,7 +184,7 @@ woa "导入公众号文章 https://mp.weixin.qq.com/s/xxx"
 
 ```bash
 export OBSIDIAN_VAULT="/Users/yeqiuyi/LifeOS/10_人生OS/叶总的人生游戏试验站/叶总的人生地图"
-export WORLD_OBSERVER_OUTPUT_DIR="/Users/yeqiuyi/LifeOS/10_人生OS/叶总的人生游戏试验站/叶总的人生地图/03_Research_研究复盘/观察实验室/04_实验设计记录"
+export WORLD_OBSERVER_OUTPUT_DIR="/Users/yeqiuyi/LifeOS/10_人生OS/叶总的人生游戏试验站/叶总的人生地图/03_Research_研究复盘/实验室/04_实验设计记录"
 export WORLD_OBSERVER_LLM="local"
 ```
 
@@ -254,7 +254,7 @@ python3 run.py --mode doctor
 python run.py --mode create --topic "OpenClaw安装经验"
 ```
 
-如果没有指定主题，Agent 会按固定流程先抓外部资料，再提取公众号格式，最后连接你的知识库观点：
+如果没有指定主题，Agent 会按固定流程先抓外部资料，再判断本地公众号收藏的内容相关性，并从本地公众号文章提取输出格式，最后连接你的知识库观点：
 
 ```bash
 woa "写一篇公众号文章"
@@ -264,7 +264,8 @@ python3 run.py --mode create --platform "公众号"
 默认策略：
 
 - 搜网上资料/热点/相关文献。
-- 看本地公众号收藏资料并提取格式。
+- 查阅本地公众号收藏资料判断相关性；有相关性可作为内容分析一部分。
+- 公众号输出格式统一从本地公众号文章提取。
 - 提取你的知识库观点。
 
 文章结构不会固定使用某个比例。Agent 会根据这些因素决定结构：

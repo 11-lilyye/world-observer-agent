@@ -95,7 +95,7 @@ class WorldObserverApp:
                 print(f"[Create] auto selected topic from hotspots: {topic}", flush=True)
         print(f"[Create] topic={topic} platform={platform or '公众号'} purpose={purpose or 'auto'}", flush=True)
         print("[Create] step 1/3: 搜网上资料/热点/相关文献", flush=True)
-        print("[Create] step 2/3: 看本地公众号收藏资料并提取格式", flush=True)
+        print("[Create] step 2/3: 查阅本地公众号收藏资料判断相关性；相关内容可参与分析；公众号输出格式统一从本地公众号文章提取", flush=True)
         reference_plan = PlatformIntelligenceAgent(self.world).build_reference_plan(
             topic,
             platform or "公众号",

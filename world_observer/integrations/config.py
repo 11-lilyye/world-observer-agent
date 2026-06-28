@@ -44,7 +44,7 @@ class Settings:
             / "叶总的人生游戏试验站"
             / "叶总的人生地图"
         )
-        default_output = default_vault / "03_Research_研究复盘" / "观察实验室" / "04_实验设计记录"
+        default_output = default_vault / "03_Research_研究复盘" / "实验室" / "04_实验设计记录"
         return cls(
             obsidian_vault=Path(vault).expanduser() if vault else default_vault,
             output_dir=Path(output).expanduser() if output else default_output,
