@@ -248,6 +248,21 @@ Use offline mode for deterministic local tests:
 WORLD_OBSERVER_SOURCE_MODE=offline
 ```
 
+Hot-source implementation lives in:
+
+```text
+world_observer/integrations/browser.py
+```
+
+Important entry points:
+
+- `daily_world_scan()` collects broad hot topics.
+- `_trendradar_sources()` reads TrendRadar/newsnow-compatible hot-list APIs.
+- `_rss_sources()` reads RSS/Atom feeds.
+- `search_topic_for_platform()` expands topic-specific references.
+
+The default `TREND_RADAR_API_URL` is treated as a configurable public endpoint. If you self-host or use a different hot-list service, point `TREND_RADAR_API_URL` to your own compatible API.
+
 ## WeChat Article Import
 
 The importer can optionally use `gxcsoccer/wechat-article-crawler` for single-article WeChat imports.
@@ -275,6 +290,21 @@ World Observer Agent is designed to work with public or self-hosted hot-topic so
 - [gxcsoccer/wechat-article-crawler](https://github.com/gxcsoccer/wechat-article-crawler) is only an optional helper for WeChat article import, not a bundled dependency.
 
 Please follow the original licenses and terms of any external source or service you configure.
+
+## Why Python?
+
+Python is used as the core runtime because it is practical for agent orchestration: file IO, RSS parsing, local model calls, Obsidian search, CLI workflows, and Markdown output are all simple to maintain in one place.
+
+Other runtimes can make the project stronger:
+
+- TypeScript/Node.js: browser automation, web dashboards, API services, and richer integrations with Playwright or browser-use.
+- React/Next.js: a local review UI for selecting topics, editing drafts, and comparing article performance.
+- SQLite/Postgres: durable memory for topics, references, duplicate detection, feedback metrics, and long-term experiments.
+- n8n: scheduled observe/create/feedback workflows without keeping a terminal open.
+- Browser-use/Computer Use: logged-in platform research, publishing assistance, and feedback collection where APIs are unavailable.
+- Rust/Go: faster crawlers or background workers if source collection becomes heavy.
+
+The current repository keeps Python as the stable core and leaves these integrations as replaceable boundaries.
 
 ## Development
 
